@@ -1,0 +1,21 @@
+@unless ($breadcrumbs->isEmpty())
+    <ul class="breadcrumb fw-semibold fs-7 my-0 pt-1">
+        @foreach ($breadcrumbs as $breadcrumb)
+            @if(!$loop->last)
+                <!--begin::Item-->
+                <li class="breadcrumb-item text-muted">
+                    <a href="{{ $breadcrumb->url }}" class="text-muted text-hover-primary">
+                        {{ $breadcrumb->title }}
+                    </a>
+                </li>
+                <!--end::Item-->
+            @else
+                <!--begin::Item-->
+                <li class="breadcrumb-item text-gray-900">
+                    {{ $breadcrumb->title }}
+                </li>
+                <!--end::Item-->
+            @endif
+        @endforeach
+    </ul>
+@endunless
