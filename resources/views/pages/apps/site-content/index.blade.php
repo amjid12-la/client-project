@@ -22,7 +22,7 @@
             </div>
             <div class="card-toolbar">
                 <!-- Search Bar -->
-                <div class="d-flex align-items-center me-3">
+                <div class="d-flex align-items-center">
                     <div class="position-relative">
                         <i class="ki-duotone ki-magnifier fs-3 position-absolute ms-3 mt-3">
                             <span class="path1"></span>
@@ -37,10 +37,6 @@
                         </button>
                     </div>
                 </div>
-                <a href="{{ route('admin.site-content.create') }}" class="btn btn-sm btn-primary">
-                    {!! getIcon('plus', 'fs-3') !!}
-                    Add New Content
-                </a>
             </div>
         </div>
 

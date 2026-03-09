@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('subtitle')->nullable();
             $table->text('content')->nullable();
             $table->string('image')->nullable(); // Hero background image
+            $table->string('background_color')->nullable(); // Footer background color
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('location')->nullable();

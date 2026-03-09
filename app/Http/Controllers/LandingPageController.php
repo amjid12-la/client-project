@@ -57,8 +57,10 @@ class LandingPageController extends Controller
         // Get dynamic content
         $heroContent = \App\Models\SiteContent::getSection('hero');
         $infoContent = \App\Models\SiteContent::getSection('info');
-        $footerAbout = \App\Models\SiteContent::getSection('footer_about');
-        $footerContact = \App\Models\SiteContent::getSection('footer_contact');
+        
+        // Get footer content (merged section)
+        $footerAbout = \App\Models\SiteContent::getSection('footer');
+        $footerContact = \App\Models\SiteContent::getSection('footer');
 
         return $dataTable->render('frontend.pages.home', compact('reports', 'heroContent', 'infoContent', 'footerAbout', 'footerContact'));
     }

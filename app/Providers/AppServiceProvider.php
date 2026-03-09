@@ -52,10 +52,13 @@ class AppServiceProvider extends ServiceProvider
         View::composer('frontend.*', function ($view) {
             $heroContent = \App\Models\SiteContent::getSection('hero');
             $infoContent = \App\Models\SiteContent::getSection('info');
-            $footerAbout = \App\Models\SiteContent::getSection('footer_about');
-            $footerContact = \App\Models\SiteContent::getSection('footer_contact');
+            $navbarContent = \App\Models\SiteContent::getSection('navbar');
             
-            $view->with(compact('heroContent', 'infoContent', 'footerAbout', 'footerContact'));
+            // Get footer content (merged section)
+            $footerAbout = \App\Models\SiteContent::getSection('footer');
+            $footerContact = \App\Models\SiteContent::getSection('footer');
+            
+            $view->with(compact('heroContent', 'infoContent', 'navbarContent', 'footerAbout', 'footerContact'));
         });
     }
 }

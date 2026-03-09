@@ -14,39 +14,6 @@ class SiteContentController extends Controller
         return view('pages.apps.site-content.index', compact('contents'));
     }
 
-    public function create()
-    {
-        $availableSections = $this->getAvailableSections();
-        return view('pages.apps.site-content.create', compact('availableSections'));
-    }
-
-    public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'section' => 'required|string|unique:site_contents,section',
-            'title' => 'nullable|string|max:255',
-            'subtitle' => 'nullable|string|max:500',
-            'content' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
-            'email' => 'nullable|email|max:255',
-            'phone' => 'nullable|string|max:50',
-            'location' => 'nullable|string|max:255',
-        ]);
-        
-        // Handle image upload
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '_' . $image->getClientOriginalName();
-            $image->move(public_path('frontend/images'), $imageName);
-            $validated['image'] = $imageName;
-        }
-        
-        SiteContent::create($validated);
-        
-        return redirect()->route('admin.site-content.index')
-            ->with('success', 'Content created successfully!');
-    }
-
     public function edit($id)
     {
         $content = SiteContent::findOrFail($id);
@@ -61,7 +28,18 @@ class SiteContentController extends Controller
             'title' => 'nullable|string|max:255',
             'subtitle' => 'nullable|string|max:500',
             'content' => 'nullable|string',
+            'contact_title' => 'nullable|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
+            'background_color' => 'nullable|string|max:7',
+            'text_color' => 'nullable|string|max:7',
+            'hero_text_color' => 'nullable|string|max:7',
+            'button_bg_color' => 'nullable|string|max:7',
+            'button_text_color' => 'nullable|string|max:7',
+            'navbar_bg_color' => 'nullable|string|max:7',
+            'navbar_text_color' => 'nullable|string|max:7',
+            'navbar_button_bg_color' => 'nullable|string|max:7',
+            'navbar_button_text_color' => 'nullable|string|max:7',
+            'info_text_color' => 'nullable|string|max:7',
             'email' => 'nullable|email|max:255',
             'phone' => 'nullable|string|max:50',
             'location' => 'nullable|string|max:255',
@@ -96,14 +74,22 @@ class SiteContentController extends Controller
             ->with('success', 'Content deleted successfully!');
     }
 
-    private function getAvailableSections()
+    public function removeImage($id)
     {
-        return [
-            'hero' => 'Hero Section',
-            'info' => 'Information Section',
-            'footer_about' => 'Footer About',
-            'footer_contact' => 'Footer Contact',
-            'custom' => 'Custom Section',
-        ];
+        $content = SiteContent::findOrFail($id);
+        
+        // Delete image file if exists
+        if ($content->image && file_exists(public_path('frontend/images/' . $content->image))) {
+            unlink(public_path('frontend/images/' . $content->image));
+        }
+        
+        // Update database
+        $content->image = null;
+        $content->save();
+        
+        return response()->json([
+            'success' => true,
+            'message' => 'Image removed successfully!'
+        ]);
     }
 }

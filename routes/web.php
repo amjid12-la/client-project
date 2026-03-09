@@ -38,10 +38,9 @@ Route::middleware(['admin_or_redirect'])->group(function () {
     // ===========================
     Route::prefix('admin/site-content')->name('admin.site-content.')->group(function () {
         Route::get('/', [\App\Http\Controllers\Admin\SiteContentController::class, 'index'])->name('index');
-        Route::get('/create', [\App\Http\Controllers\Admin\SiteContentController::class, 'create'])->name('create');
-        Route::post('/', [\App\Http\Controllers\Admin\SiteContentController::class, 'store'])->name('store');
         Route::get('/{id}/edit', [\App\Http\Controllers\Admin\SiteContentController::class, 'edit'])->name('edit');
         Route::put('/{id}', [\App\Http\Controllers\Admin\SiteContentController::class, 'update'])->name('update');
+        Route::post('/{id}/remove-image', [\App\Http\Controllers\Admin\SiteContentController::class, 'removeImage'])->name('remove-image');
         Route::delete('/{id}', [\App\Http\Controllers\Admin\SiteContentController::class, 'destroy'])->name('destroy');
     });
 

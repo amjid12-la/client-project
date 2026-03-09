@@ -116,28 +116,42 @@
 
 @section('frontend-content')
     <!-- HERO -->
+    @php
+        $heroTextColor = $heroContent->hero_text_color ?? '#ffffff';
+        $buttonBgColor = $heroContent->button_bg_color ?? '#007bff';
+        $buttonTextColor = $heroContent->button_text_color ?? '#ffffff';
+    @endphp
+    
     <section class="hero" style="background-image: url('{{ $heroContent && $heroContent->image ? asset('frontend/images/' . $heroContent->image) : asset('frontend/images/hero-pic.jpg') }}');">
         <div class="hero-content">
-            <h1 class="hero-title">{{ $heroContent->title ?? 'Report Management System' }}</h1>
-            <p class="hero-subtitle">
+            <h1 class="hero-title" style="color: {{ $heroTextColor }};">{{ $heroContent->title ?? 'Report Management System' }}</h1>
+            <p class="hero-subtitle" style="color: {{ $heroTextColor }};">
                 {{ $heroContent->subtitle ?? 'Submit, track, and search reports with ease. Your voice matters in building a transparent community.' }}
             </p>
         </div>
         <div class="hero-buttons">
-            <a href="#report-form">Report</a>
-            <a href="#report-table">Search</a>
+            <a href="#report-form" style="background-color: {{ $buttonBgColor }}; color: {{ $buttonTextColor }}; border-color: {{ $buttonBgColor }};">Report</a>
+            <a href="#report-table" style="background-color: {{ $buttonBgColor }}; color: {{ $buttonTextColor }}; border-color: {{ $buttonBgColor }};">Search</a>
         </div>
     </section>
 
     <!-- INFO + FORM -->
+    @php
+        $infoBgImage = $infoContent && $infoContent->image ? asset('frontend/images/' . $infoContent->image) : null;
+        $infoBgColor = $infoContent->background_color ?? '#f8f9fa';
+        $infoTextColor = $infoContent->info_text_color ?? '#000000';
+        $infoBgStyle = $infoBgImage 
+            ? "background-image: url('{$infoBgImage}'); background-size: cover; background-position: center; background-repeat: no-repeat;" 
+            : "background-color: {$infoBgColor};";
+    @endphp
 
-    <section class="info-section">
+    <section class="info-section" style="{{ $infoBgStyle }}">
 
         <!-- LEFT INFO (col-6) -->
         <div class="info-left">
             <div class="info-content">
-                <h2>{{ $infoContent->title ?? 'Report Information' }}</h2>
-                <p>
+                <h2 style="color: {{ $infoTextColor }} !important;">{{ $infoContent->title ?? 'Report Information' }}</h2>
+                <p style="color: {{ $infoTextColor }} !important;">
                     {{ $infoContent->content ?? 'Please provide accurate and complete information while submitting your report. Your contribution helps us maintain a reliable and searchable record for future reference.' }}
                 </p>
             </div>
@@ -211,6 +225,7 @@
         </div>
 
     </section>
+
 
     <!-- MODERN DATATABLE SECTION -->
     <section class="datatable-section" id="report-table">
