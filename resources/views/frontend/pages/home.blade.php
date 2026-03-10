@@ -193,7 +193,7 @@
 
                 <!-- reCAPTCHA -->
                 <div class="form-group">
-                    <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+                    <div class="g-recaptcha" data-sitekey="{{ config('services.recaptcha.sitekey') }}"></div>
                     <div class="invalid-feedback" id="recaptchaError" style="display: none;"></div>
                 </div>
 
