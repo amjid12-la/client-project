@@ -107,7 +107,7 @@
                                     </td>
                                     <td class="text-end">
                                         <a href="{{ route('admin.reports.show', $report->id) }}" class="btn btn-sm btn-light btn-active-light-primary">
-                                            Review
+                                            Reviews
                                         </a>
                                     </td>
                                 </tr>
