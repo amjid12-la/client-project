@@ -1683,10 +1683,14 @@ body {
 
 .footer-bottom {
     border-top: 1px solid #222;
-    text-align: center;
     padding: 18px;
     font-size: 14px;
     color: #888;
+}
+
+.footer-bottom a:hover {
+    opacity: 1 !important;
+    text-decoration: underline;
 }
 
 /* Footer Responsive Styles */
@@ -1695,6 +1699,18 @@ body {
         flex-direction: column;
         padding: 0 30px 40px;
         gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-bottom {
+        flex-direction: column !important;
+        gap: 10px !important;
+        text-align: center !important;
+    }
+    
+    .footer-bottom > div:last-child {
+        margin-top: 10px;
     }
 }
 

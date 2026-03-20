@@ -64,9 +64,21 @@
                                 </td>
                                 <td>
                                     @if($content->content)
-                                        <span class="text-gray-600">{{ Str::limit($content->content, 80) }}</span>
+                                        @php
+                                            $cleanContent = strip_tags($content->content);
+                                            $cleanContent = html_entity_decode($cleanContent, ENT_QUOTES, 'UTF-8');
+                                            $cleanContent = preg_replace('/\s+/', ' ', $cleanContent);
+                                            $cleanContent = trim($cleanContent);
+                                        @endphp
+                                        <span class="text-gray-600">{{ Str::limit($cleanContent, 80) }}</span>
                                     @elseif($content->subtitle)
-                                        <span class="text-gray-600">{{ Str::limit($content->subtitle, 80) }}</span>
+                                        @php
+                                            $cleanSubtitle = strip_tags($content->subtitle);
+                                            $cleanSubtitle = html_entity_decode($cleanSubtitle, ENT_QUOTES, 'UTF-8');
+                                            $cleanSubtitle = preg_replace('/\s+/', ' ', $cleanSubtitle);
+                                            $cleanSubtitle = trim($cleanSubtitle);
+                                        @endphp
+                                        <span class="text-gray-600">{{ Str::limit($cleanSubtitle, 80) }}</span>
                                     @else
                                         <span class="text-muted">No content</span>
                                     @endif

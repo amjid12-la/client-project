@@ -196,7 +196,8 @@
                     <div class="mb-10">
                         <label class="form-label">Content</label>
                         <textarea name="content" 
-                                  class="form-control form-control-solid @error('content') is-invalid @enderror" 
+                                  id="info_content"
+                                  class="form-control form-control-solid tinymce-editor @error('content') is-invalid @enderror" 
                                   rows="5"
                                   placeholder="Enter content">{{ old('content', $content->content) }}</textarea>
                         @error('content')
@@ -344,6 +345,200 @@
                     </div>
                 @endif
 
+                <!-- Privacy Policy Section -->
+                @if($content->section === 'privacy_policy')
+                    <div class="mb-10">
+                        <label class="form-label required">Page Title</label>
+                        <input type="text" 
+                               name="title" 
+                               class="form-control form-control-solid @error('title') is-invalid @enderror" 
+                               value="{{ old('title', $content->title) }}"
+                               placeholder="Enter page title">
+                        @error('title')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-10">
+                        <label class="form-label">Content</label>
+                        <textarea name="content" 
+                                  id="privacy_policy_content"
+                                  class="form-control form-control-solid tinymce-editor @error('content') is-invalid @enderror" 
+                                  rows="15"
+                                  placeholder="Enter privacy policy content">{{ old('content', $content->content) }}</textarea>
+                        @error('content')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        <div class="form-text">Full privacy policy text with formatting</div>
+                    </div>
+
+                    <div class="separator separator-dashed my-7"></div>
+                    <h4 class="mb-5">Page Styling</h4>
+
+                    <div class="mb-10">
+                        <label class="form-label">Page Background Color</label>
+                        <div class="input-group">
+                            <input type="color" 
+                                   name="page_bg_color" 
+                                   id="page_bg_color"
+                                   class="form-control form-control-color @error('page_bg_color') is-invalid @enderror" 
+                                   value="{{ old('page_bg_color', $content->page_bg_color ?? '#667eea') }}"
+                                   style="width: 80px; height: 45px;">
+                            <input type="text" 
+                                   id="page_bg_color_text"
+                                   class="form-control form-control-solid" 
+                                   value="{{ old('page_bg_color', $content->page_bg_color ?? '#667eea') }}"
+                                   readonly
+                                   placeholder="#667eea">
+                        </div>
+                        @error('page_bg_color')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        <div class="form-text">Choose page background gradient start color</div>
+                    </div>
+
+                    <div class="mb-10">
+                        <label class="form-label">Page Text Color</label>
+                        <div class="input-group">
+                            <input type="color" 
+                                   name="page_text_color" 
+                                   id="page_text_color"
+                                   class="form-control form-control-color @error('page_text_color') is-invalid @enderror" 
+                                   value="{{ old('page_text_color', $content->page_text_color ?? '#555555') }}"
+                                   style="width: 80px; height: 45px;">
+                            <input type="text" 
+                                   id="page_text_color_text"
+                                   class="form-control form-control-solid" 
+                                   value="{{ old('page_text_color', $content->page_text_color ?? '#555555') }}"
+                                   readonly
+                                   placeholder="#555555">
+                        </div>
+                        @error('page_text_color')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        <div class="form-text">Choose page content text color</div>
+                    </div>
+
+                    <div class="mb-10">
+                        <label class="form-label">Header Background Color</label>
+                        <div class="input-group">
+                            <input type="color" 
+                                   name="header_bg_color" 
+                                   id="header_bg_color"
+                                   class="form-control form-control-color @error('header_bg_color') is-invalid @enderror" 
+                                   value="{{ old('header_bg_color', $content->header_bg_color ?? '#764ba2') }}"
+                                   style="width: 80px; height: 45px;">
+                            <input type="text" 
+                                   id="header_bg_color_text"
+                                   class="form-control form-control-solid" 
+                                   value="{{ old('header_bg_color', $content->header_bg_color ?? '#764ba2') }}"
+                                   readonly
+                                   placeholder="#764ba2">
+                        </div>
+                        @error('header_bg_color')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        <div class="form-text">Choose header background gradient end color</div>
+                    </div>
+                @endif
+
+                <!-- Terms & Conditions Section -->
+                @if($content->section === 'terms_conditions')
+                    <div class="mb-10">
+                        <label class="form-label required">Page Title</label>
+                        <input type="text" 
+                               name="title" 
+                               class="form-control form-control-solid @error('title') is-invalid @enderror" 
+                               value="{{ old('title', $content->title) }}"
+                               placeholder="Enter page title">
+                        @error('title')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-10">
+                        <label class="form-label">Content</label>
+                        <textarea name="content" 
+                                  id="terms_content"
+                                  class="form-control form-control-solid tinymce-editor @error('content') is-invalid @enderror" 
+                                  rows="15"
+                                  placeholder="Enter terms & conditions content">{{ old('content', $content->content) }}</textarea>
+                        @error('content')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        <div class="form-text">Full terms & conditions text</div>
+                    </div>
+
+                    <div class="separator separator-dashed my-7"></div>
+                    <h4 class="mb-5">Page Styling</h4>
+
+                    <div class="mb-10">
+                        <label class="form-label">Page Background Color</label>
+                        <div class="input-group">
+                            <input type="color" 
+                                   name="page_bg_color" 
+                                   id="terms_page_bg_color"
+                                   class="form-control form-control-color @error('page_bg_color') is-invalid @enderror" 
+                                   value="{{ old('page_bg_color', $content->page_bg_color ?? '#f093fb') }}"
+                                   style="width: 80px; height: 45px;">
+                            <input type="text" 
+                                   id="terms_page_bg_color_text"
+                                   class="form-control form-control-solid" 
+                                   value="{{ old('page_bg_color', $content->page_bg_color ?? '#f093fb') }}"
+                                   readonly
+                                   placeholder="#f093fb">
+                        </div>
+                        @error('page_bg_color')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        <div class="form-text">Choose page background gradient start color</div>
+                    </div>
+
+                    <div class="mb-10">
+                        <label class="form-label">Page Text Color</label>
+                        <div class="input-group">
+                            <input type="color" 
+                                   name="page_text_color" 
+                                   id="terms_page_text_color"
+                                   class="form-control form-control-color @error('page_text_color') is-invalid @enderror" 
+                                   value="{{ old('page_text_color', $content->page_text_color ?? '#555555') }}"
+                                   style="width: 80px; height: 45px;">
+                            <input type="text" 
+                                   id="terms_page_text_color_text"
+                                   class="form-control form-control-solid" 
+                                   value="{{ old('page_text_color', $content->page_text_color ?? '#555555') }}"
+                                   readonly
+                                   placeholder="#555555">
+                        </div>
+                        @error('page_text_color')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        <div class="form-text">Choose page content text color</div>
+                    </div>
+
+                    <div class="mb-10">
+                        <label class="form-label">Header Background Color</label>
+                        <div class="input-group">
+                            <input type="color" 
+                                   name="header_bg_color" 
+                                   id="terms_header_bg_color"
+                                   class="form-control form-control-color @error('header_bg_color') is-invalid @enderror" 
+                                   value="{{ old('header_bg_color', $content->header_bg_color ?? '#f5576c') }}"
+                                   style="width: 80px; height: 45px;">
+                            <input type="text" 
+                                   id="terms_header_bg_color_text"
+                                   class="form-control form-control-solid" 
+                                   value="{{ old('header_bg_color', $content->header_bg_color ?? '#f5576c') }}"
+                                   readonly
+                                   placeholder="#f5576c">
+                        </div>
+                        @error('header_bg_color')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                        <div class="form-text">Choose header background gradient end color</div>
+                    </div>
+                @endif
+
                 <!-- Footer Section (Combined) -->
                 @if($content->section === 'footer')
                     <h4 class="mb-5">About Section</h4>
@@ -363,7 +558,8 @@
                     <div class="mb-10">
                         <label class="form-label">About Content</label>
                         <textarea name="content" 
-                                  class="form-control form-control-solid @error('content') is-invalid @enderror" 
+                                  id="footer_content"
+                                  class="form-control form-control-solid tinymce-editor @error('content') is-invalid @enderror" 
                                   rows="4"
                                   placeholder="Enter about content">{{ old('content', $content->content) }}</textarea>
                         @error('content')
@@ -485,7 +681,28 @@
     </div>
 
     @push('scripts')
+    <!-- TinyMCE CDN (jsDelivr) -->
+    <script src="https://cdn.jsdelivr.net/npm/tinymce@6.8.2/tinymce.min.js"></script>
+    
     <script>
+        // Initialize TinyMCE for all textareas with class 'tinymce-editor'
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof tinymce !== 'undefined') {
+                tinymce.init({
+                    selector: '.tinymce-editor',
+                    height: 400,
+                    menubar: 'edit view insert format tools table',
+                    plugins: 'advlist autolink lists link image charmap preview anchor searchreplace visualblocks code fullscreen insertdatetime media table help wordcount',
+                    toolbar: 'undo redo | blocks fontsize | bold italic underline strikethrough | forecolor backcolor | alignleft aligncenter alignright alignjustify | bullist numlist | outdent indent | link image table | removeformat code fullscreen | help',
+                    toolbar_mode: 'wrap',
+                    content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px; padding: 10px; }',
+                    branding: false,
+                    statusbar: true,
+                    resize: true
+                });
+            }
+        });
+
         // Remove image function
         function removeImage(section, contentId) {
             if (!confirm('Are you sure you want to remove this image?')) {
@@ -622,6 +839,28 @@
                     navbarTextColorText.value = this.value;
                 });
             }
+
+            // Privacy Policy page colors
+            ['page_bg_color', 'page_text_color', 'header_bg_color'].forEach(function(colorId) {
+                const picker = document.getElementById(colorId);
+                const text = document.getElementById(colorId + '_text');
+                if (picker && text) {
+                    picker.addEventListener('input', function() {
+                        text.value = this.value;
+                    });
+                }
+            });
+
+            // Terms page colors
+            ['terms_page_bg_color', 'terms_page_text_color', 'terms_header_bg_color'].forEach(function(colorId) {
+                const picker = document.getElementById(colorId);
+                const text = document.getElementById(colorId + '_text');
+                if (picker && text) {
+                    picker.addEventListener('input', function() {
+                        text.value = this.value;
+                    });
+                }
+            });
         });
     </script>
     @endpush

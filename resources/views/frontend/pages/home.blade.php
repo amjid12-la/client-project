@@ -151,42 +151,47 @@
         <div class="info-left">
             <div class="info-content">
                 <h2 style="color: {{ $infoTextColor }} !important;">{{ $infoContent->title ?? 'Report Information' }}</h2>
-                <p style="color: {{ $infoTextColor }} !important;">
-                    {{ $infoContent->content ?? 'Please provide accurate and complete information while submitting your report. Your contribution helps us maintain a reliable and searchable record for future reference.' }}
-                </p>
+                <div style="color: {{ $infoTextColor }} !important;">
+                    {!! $infoContent->content ?? 'Please provide accurate and complete information while submitting your report. Your contribution helps us maintain a reliable and searchable record for future reference.' !!}
+                </div>
             </div>
         </div>
 
         <!-- RIGHT FORM (col-6) -->
         <div class="info-right" id="report-form">
             @auth
-            <form class="report-form" id="reportForm" enctype="multipart/form-data">
+            <form class="report-form" id="reportForm" enctype="multipart/form-data" style="background-color: transparent !important; border: 2px solid rgba(255, 255, 255, 0.4) !important; box-shadow: none !important;">
                 @csrf
-                <h2>Submit A Report</h2>
+                <h2 style="color: {{ $infoTextColor }} !important;">Submit A Report</h2>
+                
+                <!-- Info Content Display (Static) -->
+                <div class="mb-4"style="color: {{ $infoTextColor }} !important; padding: 15px; background: rgba(255,255,255,0.15); border-radius: 8px; border-left: 4px solid {{ $infoTextColor }};">
+                    <p>Please provide accurate and complete information while submitting your report.Your contribution helps us maintain a reliable and searchable record for future reference.</p>
+                </div>
 
                 <div class="form-group">
-                    <label>Full Name</label>
+                    <label style="color: {{ $infoTextColor }} !important;">Full Name</label>
                     <input type="text" name="individual_name" id="individual_name" value="{{ old('individual_name') }}"
                         placeholder="Enter individual name" pattern="[A-Za-z\s]+" title="Name must contain only letters and spaces">
                     <div class="invalid-feedback" id="nameError" style="display: none;"></div>
                 </div>
 
                 <div class="form-group">
-                    <label>Location</label>
+                    <label style="color: {{ $infoTextColor }} !important;">Location</label>
                     <input type="text" name="location" id="location" value="{{ old('location') }}"
                         placeholder="Enter location">
                     <div class="invalid-feedback" id="locationError" style="display: none;"></div>
                 </div>
 
                 <div class="form-group">
-                    <label>Photo</label>
+                    <label style="color: {{ $infoTextColor }} !important;">Photo</label>
                     <input type="file" name="photo" id="photoInput" accept="image/*">
-                    <small class="text-muted d-block mt-1">Max 5MB, JPG/PNG/GIF</small>
+                    <small class="d-block mt-1" style="color: {{ $infoTextColor }} !important; opacity: 0.7;">Max 5MB, JPG/PNG/GIF</small>
                     <div class="invalid-feedback" id="photoError" style="display: none;"></div>
                 </div>
 
                 <div class="form-group">
-                    <label>Description</label>
+                    <label style="color: {{ $infoTextColor }} !important;">Description</label>
                     <textarea name="narrative" id="narrative" rows="4" placeholder="Describe the issue...">{{ old('narrative') }}</textarea>
                     <div class="invalid-feedback" id="narrativeError" style="display: none;"></div>
                 </div>
@@ -202,13 +207,24 @@
                 </button>
             </form>
             @else
-            <div class="report-form">
-                <h2>Submit A Report</h2>
+            <div class="report-form" style="background-color: transparent !important; border: 2px solid rgba(255, 255, 255, 0.4) !important; box-shadow: none !important;">
+                <h2 style="color: {{ $infoTextColor }} !important;">Submit A Report</h2>
+                
+                <!-- Info Content Display (Static) -->
+                <div class="mb-4" style="color: {{ $infoTextColor }} !important; padding: 15px; background: rgba(255,255,255,0.15); border-radius: 8px; border-left: 4px solid {{ $infoTextColor }};">
+                    <p><strong>Please provide accurate</strong></p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;and complete information while submitting your report.</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;Your contribution helps us maintain a reliable and searchable record for future reference.</p>
+                </div>
+                
                 <p class="text-muted mb-4">Please login or register to submit a report</p>
                 
                 <div class="text-center py-5">
                     <i class="fas fa-lock fa-4x text-muted mb-4"></i>
-                    <h4 class="mb-4">Authentication Required</h4>
+                    <h4 class="mb-4" style="color: {{ $infoTextColor }} !important;">Authentication Required</h4>
                     <p class="text-muted mb-4">You need to be logged in to submit a report. Please login or create an account to continue.</p>
                     
                     <div class="d-flex gap-3 justify-content-center">

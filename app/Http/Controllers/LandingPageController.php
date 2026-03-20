@@ -64,4 +64,14 @@ class LandingPageController extends Controller
 
         return $dataTable->render('frontend.pages.home', compact('reports', 'heroContent', 'infoContent', 'footerAbout', 'footerContact'));
     }
+
+    public function privacyPolicy()
+    {
+        return view('frontend.pages.privacy-policy');
+    }
+
+    public function termsConditions()
+    {
+        return view('frontend.pages.terms-conditions');
+    }
 }

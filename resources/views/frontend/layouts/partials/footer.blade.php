@@ -22,6 +22,8 @@
                 <li><a href="{{ route('home') }}" style="color: {{ $footerTextColor }}; opacity: 0.85;">Home</a></li>
                 <li><a href="#report-form" style="color: {{ $footerTextColor }}; opacity: 0.85;">Submit Report</a></li>
                 <li><a href="#report-table" style="color: {{ $footerTextColor }}; opacity: 0.85;">Search Reports</a></li>
+                <li><a href="{{ route('privacy-policy') }}" style="color: {{ $footerTextColor }}; opacity: 0.85;">Privacy Policy</a></li>
+                <li><a href="{{ route('terms-conditions') }}" style="color: {{ $footerTextColor }}; opacity: 0.85;">Terms & Conditions</a></li>
             </ul>
         </div>
 
@@ -35,8 +37,15 @@
 
     </div>
 
-    <div class="footer-bottom" style="color: {{ $footerTextColor }}; border-top-color: {{ $footerTextColor }}33;">
-        © {{ date('Y') }} Report System. All rights reserved.
+    <div class="footer-bottom" style="color: {{ $footerTextColor }}; border-top-color: {{ $footerTextColor }}33; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 20px 40px;">
+        <div>
+            © {{ date('Y') }} Report System. All rights reserved.
+        </div>
+        <div style="display: flex; gap: 20px;">
+            <a href="{{ route('privacy-policy') }}" style="color: {{ $footerTextColor }}; opacity: 0.85; text-decoration: none; font-size: 14px;">Privacy Policy</a>
+            <span style="color: {{ $footerTextColor }}; opacity: 0.5;">|</span>
+            <a href="{{ route('terms-conditions') }}" style="color: {{ $footerTextColor }}; opacity: 0.85; text-decoration: none; font-size: 14px;">Terms & Conditions</a>
+        </div>
     </div>
 </footer>
 

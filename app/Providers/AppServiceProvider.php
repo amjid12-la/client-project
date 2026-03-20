@@ -53,12 +53,14 @@ class AppServiceProvider extends ServiceProvider
             $heroContent = \App\Models\SiteContent::getSection('hero');
             $infoContent = \App\Models\SiteContent::getSection('info');
             $navbarContent = \App\Models\SiteContent::getSection('navbar');
+            $privacyPolicy = \App\Models\SiteContent::getSection('privacy_policy');
+            $termsConditions = \App\Models\SiteContent::getSection('terms_conditions');
             
             // Get footer content (merged section)
             $footerAbout = \App\Models\SiteContent::getSection('footer');
             $footerContact = \App\Models\SiteContent::getSection('footer');
             
-            $view->with(compact('heroContent', 'infoContent', 'navbarContent', 'footerAbout', 'footerContact'));
+            $view->with(compact('heroContent', 'infoContent', 'navbarContent', 'privacyPolicy', 'termsConditions', 'footerAbout', 'footerContact'));
         });
     }
 }
