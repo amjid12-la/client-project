@@ -10,9 +10,9 @@
         <!-- ABOUT -->
         <div class="footer-col">
             <h3 style="color: {{ $footerTextColor }};">{{ $footerAbout->title ?? 'Report System' }}</h3>
-            <p style="color: {{ $footerTextColor }};">
-                {{ $footerAbout->content ?? 'A secure and reliable platform to submit and manage reports. Your information helps build transparency and accountability.' }}
-            </p>
+            <div style="color: {{ $footerTextColor }};">
+                {!! $footerAbout->content ?? 'A secure and reliable platform to submit and manage reports. Your information helps build transparency and accountability.' !!}
+            </div>
         </div>
 
         <!-- LINKS -->
